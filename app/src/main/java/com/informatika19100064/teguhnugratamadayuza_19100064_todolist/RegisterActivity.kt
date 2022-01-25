@@ -1,15 +1,14 @@
-package com.informatika19100064.databarang
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.informatika19100064.databarang.model.ResponseAdmin
-import com.informatika19100064.databarang.network.koneksi
-import com.informatika19100064.databarang.service.SessionPreferences
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseAdmin
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.network.koneksi
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.service.SessionPreferences
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.btn_clean
 import kotlinx.android.synthetic.main.activity_login.btn_submit

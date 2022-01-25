@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -7,10 +7,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.informatika19100064.databarang.adapter.ListContent
-import com.informatika19100064.databarang.model.ResponseActionBarang
-import com.informatika19100064.databarang.model.ResponseBarang
-import com.informatika19100064.databarang.network.koneksi
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.adapter.ListContent
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseActionBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.network.koneksi
 import kotlinx.android.synthetic.main.activity_update_data.*
 import kotlinx.android.synthetic.main.activity_update_data.et_jumlah_barang
 import kotlinx.android.synthetic.main.activity_update_data.et_nama_barang
@@ -25,25 +25,43 @@ class UpdateDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_data)
-        toolbar.title = "UPDATE DATA"
+        toolbar.title = "Edit Daily"
         toolbar.setTitleTextColor(Color.WHITE)
 
         val i = intent
         val idBarang = i.getStringExtra("IDBARANG")
         val namaBarang = i.getStringExtra("NAMABARANG")
         val jumlahBarang = i.getStringExtra("JUMLAHBARANG")
+        val kodeBarang = i.getStringExtra("KODEBARANG")
+        val hargaBarang = i.getStringExtra("HARGABARANG")
 
         et_nama_barang.setText(namaBarang)
         et_jumlah_barang.setText(jumlahBarang)
+        et_kode_barang.setText(kodeBarang)
+        et_harga_barang.setText(hargaBarang)
         btn_submit.setOnClickListener {
             val etNamaBarang = et_nama_barang.text
             val etJmlBarang = et_jumlah_barang.text
+            val etkodeBarang = et_kode_barang.text
+            val ethargaBarang = et_harga_barang.text
             if (etJmlBarang.isEmpty()){
                 Toast.makeText(this@UpdateDataActivity, "Jumlah Barang Tidak Boleh Kosong", Toast.LENGTH_LONG).show()
             }else if (etNamaBarang.isEmpty()){
                 Toast.makeText(this@UpdateDataActivity, "Nama Barang Tidak Boleh Kosong", Toast.LENGTH_LONG).show()
+            } else if (etkodeBarang.isEmpty()) {
+                Toast.makeText(
+                    this@UpdateDataActivity,
+                    "Kode Barang Tidak Boleh Kosong",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (ethargaBarang.isEmpty()) {
+                Toast.makeText(
+                    this@UpdateDataActivity,
+                    "Harga Barang Tidak Boleh Kosong",
+                    Toast.LENGTH_LONG
+                ).show()
             }else{
-                actionData(idBarang.toString(), etNamaBarang.toString(), etJmlBarang.toString())
+                actionData(idBarang.toString(), etNamaBarang.toString(), etJmlBarang.toString(), etkodeBarang.toString(), ethargaBarang.toString())
             }
         }
         btn_back.setOnClickListener {
@@ -51,8 +69,8 @@ class UpdateDataActivity : AppCompatActivity() {
         }
         getData()
     }
-    fun actionData(id : String, namaBarang : String, jmlBarang : String){
-        koneksi.service.updateBarang(id, namaBarang, jmlBarang).enqueue(object : Callback<ResponseActionBarang>{
+    fun actionData(id : String, namaBarang : String, jmlBarang : String, kodeBarang: String, hargaBarang: String){
+        koneksi.service.updateBarang(id, namaBarang, jmlBarang, kodeBarang, hargaBarang).enqueue(object : Callback<ResponseActionBarang>{
             override fun onFailure(call: Call<ResponseActionBarang>, t: Throwable) {
                 Log.d("pesan1", t.localizedMessage)
             }

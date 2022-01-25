@@ -1,8 +1,8 @@
-package com.informatika19100064.databarang.network
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist.network
 
-import com.informatika19100064.databarang.model.ResponseActionBarang
-import com.informatika19100064.databarang.model.ResponseAdmin
-import com.informatika19100064.databarang.model.ResponseBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseActionBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseAdmin
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseBarang
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,16 +17,20 @@ interface ApiService {
     @FormUrlEncoded
     @POST("create.php")
     fun insertBarang(
-        @Field("nama_barang") namaBarang: String?,
-        @Field("jumlah_barang") jmlBarang: String?
+        @Field("waktu") namaBarang: String?,
+        @Field("tanggal") jmlBarang: String?,
+        @Field("kegiatan") kodeBarang: String?,
+        @Field("prioritas") hargaBarang: String?
     ): Call<ResponseActionBarang>
 
     @FormUrlEncoded
     @POST("update.php")
     fun updateBarang(
         @Field("id") id: String?,
-        @Field("nama_barang") namaBarang: String?,
-        @Field("jumlah_barang") jmlBarang: String?
+        @Field("waktu") namaBarang: String?,
+        @Field("tanggal") jmlBarang: String?,
+        @Field("kegiatan") kodeBarang: String?,
+        @Field("prioritas") hargaBarang: String?
     ): Call<ResponseActionBarang>
 
     @FormUrlEncoded

@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -7,10 +7,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.informatika19100064.databarang.adapter.ListContent
-import com.informatika19100064.databarang.model.ResponseActionBarang
-import com.informatika19100064.databarang.model.ResponseBarang
-import com.informatika19100064.databarang.network.koneksi
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.adapter.ListContent
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseActionBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.network.koneksi
 import kotlinx.android.synthetic.main.activity_insert_data.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,12 +21,14 @@ class InsertDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert_data)
-        toolbar.title = "INSERT DATA"
+        toolbar.title = "Add Daily"
         toolbar.setTitleTextColor(Color.WHITE)
 
         btn_submit.setOnClickListener {
             val etNamaBarang = et_nama_barang.text
             val etJmlBarang = et_jumlah_barang.text
+            val etkodeBarang = et_kode_barang.text
+            val ethargaBarang = et_harga_barang.text
             if (etJmlBarang.isEmpty()) {
                 Toast.makeText(
                     this@InsertDataActivity,
@@ -39,8 +41,20 @@ class InsertDataActivity : AppCompatActivity() {
                     "Nama Barang Tidak Boleh Kosong",
                     Toast.LENGTH_LONG
                 ).show()
+            } else if (etkodeBarang.isEmpty()) {
+                Toast.makeText(
+                    this@InsertDataActivity,
+                    "Kode Barang Tidak Boleh Kosong",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (ethargaBarang.isEmpty()) {
+                Toast.makeText(
+                    this@InsertDataActivity,
+                    "Harga Barang Tidak Boleh Kosong",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
-                actionData(etNamaBarang.toString(), etJmlBarang.toString())
+                actionData(etNamaBarang.toString(), etJmlBarang.toString(), etkodeBarang.toString(), ethargaBarang.toString())
             }
         }
 
@@ -53,11 +67,13 @@ class InsertDataActivity : AppCompatActivity() {
     fun formClear() {
         et_nama_barang.text.clear()
         et_jumlah_barang.text.clear()
+        et_kode_barang.text.clear()
+        et_harga_barang.text.clear()
 
     }
 
-    fun actionData(namaBarang: String, jmlBarang: String) {
-        koneksi.service.insertBarang(namaBarang, jmlBarang)
+    fun actionData(namaBarang: String, jmlBarang: String, kodeBarang: String, hargaBarang: String) {
+        koneksi.service.insertBarang(namaBarang, jmlBarang, kodeBarang, hargaBarang)
             .enqueue(object : Callback<ResponseActionBarang> {
                 override fun onFailure(call: Call<ResponseActionBarang>, t: Throwable) {
                     Log.d("pesan1", t.localizedMessage)

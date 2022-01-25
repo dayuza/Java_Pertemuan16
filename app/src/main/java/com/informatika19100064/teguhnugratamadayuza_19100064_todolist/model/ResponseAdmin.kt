@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang.model
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model
 
 import com.google.gson.annotations.SerializedName
 

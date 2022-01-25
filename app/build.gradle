@@ -8,7 +8,7 @@ android {
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        applicationId "com.informatika19100064.databarang"
+        applicationId "com.informatika19100064.teguhnugratamadayuza_19100064_todolist"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

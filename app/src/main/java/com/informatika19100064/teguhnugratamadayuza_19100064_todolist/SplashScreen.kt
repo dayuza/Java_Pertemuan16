@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

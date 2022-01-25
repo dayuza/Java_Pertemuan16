@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang.adapter
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -11,13 +11,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.informatika19100064.databarang.InsertDataActivity
-import com.informatika19100064.databarang.MainActivity
-import com.informatika19100064.databarang.R
-import com.informatika19100064.databarang.UpdateDataActivity
-import com.informatika19100064.databarang.model.DataItem
-import com.informatika19100064.databarang.model.ResponseActionBarang
-import com.informatika19100064.databarang.network.koneksi
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.InsertDataActivity
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.MainActivity
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.R
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.UpdateDataActivity
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.DataItem
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model.ResponseActionBarang
+import com.informatika19100064.teguhnugratamadayuza_19100064_todolist.network.koneksi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +27,8 @@ class ListContent(val ldata : List<DataItem?>?, val context: Context, val kondis
         class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
             val namaBarang = view.findViewById<TextView>(R.id.tv_nama_barang)
             val jmlBarang = view.findViewById<TextView>(R.id.tv_jumlah_barang)
+            val kodeBarang = view.findViewById<TextView>(R.id.tv_kode_barang)
+            val hargaBarang = view.findViewById<TextView>(R.id.tv_harga_barang)
             val editBarang = view.findViewById<TextView>(R.id.tv_edit)
             val deleteBarang = view.findViewById<TextView>(R.id.tv_delete)
 
@@ -44,11 +46,15 @@ class ListContent(val ldata : List<DataItem?>?, val context: Context, val kondis
         val model = ldata?.get(position)
         holder.namaBarang.text = model?.namaBarang
         holder.jmlBarang.text = model?.jumlahBarang
+        holder.kodeBarang.text = model?.kodeBarang
+        holder.hargaBarang.text = model?.hargaBarang
         holder.editBarang.setOnClickListener {
             val i = Intent(context, UpdateDataActivity::class.java)
             i.putExtra("IDBARANG", model?.id)
             i.putExtra("NAMABARANG", model?.namaBarang)
             i.putExtra("JMLBARANG", model?.jumlahBarang)
+            i.putExtra("KODEBARANG", model?.kodeBarang)
+            i.putExtra("HARGABARANG", model?.hargaBarang)
             context.startActivity(i)
         }
         holder.deleteBarang.setOnClickListener {

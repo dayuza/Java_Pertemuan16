@@ -1,4 +1,4 @@
-package com.informatika19100064.databarang.model
+package com.informatika19100064.teguhnugratamadayuza_19100064_todolist.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -16,12 +16,18 @@ data class ResponseBarang(
 
 data class DataItem(
 
-    @field:SerializedName("nama_barang")
+    @field:SerializedName("waktu")
     val namaBarang: String? = null,
 
     @field:SerializedName("id")
     val id: String? = null,
 
-    @field:SerializedName("jumlah_barang")
-    val jumlahBarang: String? =null
+    @field:SerializedName("tanggal")
+    val jumlahBarang: String? =null,
+
+    @field:SerializedName("kegiatan")
+    val kodeBarang: String? =null,
+
+    @field:SerializedName("prioritas")
+    val hargaBarang: String? =null
 )
